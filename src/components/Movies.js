@@ -1,42 +1,22 @@
 import React from 'react'
 import styled from 'styled-components';
+import { selectMovies } from "../features/movies/movieSlice"
+import { useSelector } from 'react-redux';
 const Movies = () => {
+
+    const movies = useSelector(selectMovies)
+
     return (
         <Container>
             <h4>Recommended for you</h4>
             <Content>
-            <Wrap>
-            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuF0-Flnbf73nycYdvb0hGXdNkwp-Jx9ytnjRJOgGwDSYspYWafW5pxjqGO3D86FLSifc&usqp=CAU"/>
-            </Wrap>
-            
-            <Wrap>
-            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuF0-Flnbf73nycYdvb0hGXdNkwp-Jx9ytnjRJOgGwDSYspYWafW5pxjqGO3D86FLSifc&usqp=CAU"/>
-            </Wrap>
-            
-            <Wrap>
-            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuF0-Flnbf73nycYdvb0hGXdNkwp-Jx9ytnjRJOgGwDSYspYWafW5pxjqGO3D86FLSifc&usqp=CAU"/>
-            </Wrap>
-            
-            <Wrap>
-            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuF0-Flnbf73nycYdvb0hGXdNkwp-Jx9ytnjRJOgGwDSYspYWafW5pxjqGO3D86FLSifc&usqp=CAU"/>
-            </Wrap>
-            
-            <Wrap>
-            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuF0-Flnbf73nycYdvb0hGXdNkwp-Jx9ytnjRJOgGwDSYspYWafW5pxjqGO3D86FLSifc&usqp=CAU"/>
-            </Wrap>
-            
-            <Wrap>
-            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuF0-Flnbf73nycYdvb0hGXdNkwp-Jx9ytnjRJOgGwDSYspYWafW5pxjqGO3D86FLSifc&usqp=CAU"/>
-            </Wrap>
-            
-            <Wrap>
-            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuF0-Flnbf73nycYdvb0hGXdNkwp-Jx9ytnjRJOgGwDSYspYWafW5pxjqGO3D86FLSifc&usqp=CAU"/>
-            </Wrap>
-            
-            <Wrap>
-            <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuF0-Flnbf73nycYdvb0hGXdNkwp-Jx9ytnjRJOgGwDSYspYWafW5pxjqGO3D86FLSifc&usqp=CAU"/>
-            </Wrap>
-            
+                {movies &&
+                    movies.map((movie) =>
+
+                        <Wrap>
+                            <img src={movie.cardImg} />
+                        </Wrap>
+                    )}
             </Content>
         </Container>
     )
@@ -44,7 +24,7 @@ const Movies = () => {
 
 export default Movies
 
-const Container=styled.div`
+const Container = styled.div`
 
 `
 
@@ -54,7 +34,7 @@ grid-gap:25px;
 grid-template-columns: repeat(4, minmax(0,1fr));
 `
 
-const Wrap=styled.div`
+const Wrap = styled.div`
 border-radius:10px;
 overflow:hidden;
 cursor:pointer;
